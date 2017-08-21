@@ -22,11 +22,9 @@ int Client::sendMessage(QString _message) const {
         QDataStream io(socket);
         io.setVersion(QDataStream::Qt_5_8);
         io << quint8(MessageType::message);
-        if (socket->waitForReadyRead(2000)) {
-            qDebug() << socket->bytesAvailable();
+        if (socket->waitForReadyRead()) {
             quint8 result;
             io >> result;
-            qDebug() << result;
             if (result == 1) {
                 io << _message.toUtf8();
             }
