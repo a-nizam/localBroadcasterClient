@@ -27,7 +27,7 @@ public:
     int connect();
     int sendMessage(QString _message) const;
 
-    enum MessageType { sendId };
+    enum MessageType { id, message };
 };
 
 #endif // CLIENT_H
